@@ -45,4 +45,5 @@ The design layout was designed in PowerPoint to have an idea of what I wanted th
 This was a fun project to work on. Hopefully, the Power Query Script and documentation would help you replicate on your own data.
 In the future there might be possible improvements on the Power Query Scripts.
 
-I do not provide the .pbix for privacy reasons.
+I do not provide the .pbix for privacy reasons. However you explore the interactive version of the report to see the full functionality and User Experience.
+[WhatsApp Analytics](https://app.powerbi.com/view?r=eyJrIjoiNzJkMzlkMmQtYTc5YS00MjUwLTljYzQtMDEyYmU5NmIwYmNmIiwidCI6ImQ1Yjk0YzQ0LWU5YjMtNGY1ZC1iZmFiLTBhMjE5NDg2NWNmNCJ9)
