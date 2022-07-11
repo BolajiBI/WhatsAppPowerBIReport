@@ -6,8 +6,7 @@ This project was one that resulted from a search for a pet project (passion proj
 - Report requirement
 - Data Modelling
 - Report Design
-- User Feedback
-- Report Limitation
+- Data & Report Limitation
 - Conclusion
 
 ## Data Gathering & Transformation
@@ -34,3 +33,13 @@ The design layout was designed in PowerPoint to have an idea of the I wanted the
 [Download PowerPoint file](/DesignLayout.pptx)
 
 ![Sample Layout](https://user-images.githubusercontent.com/107071538/178272805-42860b35-3629-4f5c-b9e5-2cbb7b2d2a20.png)
+
+## Data & Report Limitations
+- The exported data does not include all messages from the inception of the group chat.
+- From the data there is no way to identify who a message was responding to except the person was directly tagged.
+- The data transformation and report does not provide data on who a message was in response to.
+- Parts of a message might be ommitted due to some needed fix in the Power Query Script.
+- Report does not cover a thematic analysis of the chats.
+
+## This was a fun project to work on. Hopefully, the Power Query Script and documentation would help you replicate on your own data. 
+I do not provide the .pbix for privacy reasons.
