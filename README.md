@@ -34,6 +34,9 @@ The design layout was designed in PowerPoint to have an idea of what I wanted th
 
 ![Sample Layout](https://user-images.githubusercontent.com/107071538/178272805-42860b35-3629-4f5c-b9e5-2cbb7b2d2a20.png)
 
+Here is the final report design.
+![WhatsApp Analytics](https://user-images.githubusercontent.com/107071538/178370641-23a50341-1e26-4caa-9169-67711fcb3622.png)
+
 ## Data & Report Limitations
 - The exported data does not include all messages from the inception of the group chat.
 - From the data there is no way to identify who a message was responding to except the person was directly tagged.
