@@ -41,5 +41,8 @@ The design layout was designed in PowerPoint to have an idea of the I wanted the
 - Parts of a message might be ommitted due to some needed fix in the Power Query Script.
 - Report does not cover a thematic analysis of the chats.
 
-## This was a fun project to work on. Hopefully, the Power Query Script and documentation would help you replicate on your own data. 
+## Conclusion
+This was a fun project to work on. Hopefully, the Power Query Script and documentation would help you replicate on your own data.
+In the future there might be possible improvements on the Power Query Scripts.
+
 I do not provide the .pbix for privacy reasons.
