@@ -29,7 +29,7 @@ After all the tables are created, the needed relationships are created and it lo
 ![Model](https://user-images.githubusercontent.com/107071538/178270411-0e174101-b595-4bd2-91be-83faf47a0617.png)
 
 ## Report Design
-The design layout was designed in PowerPoint to have an idea of the I wanted the final output to be in PowerBI.
+The design layout was designed in PowerPoint to have an idea of what I wanted the final output to be in PowerBI.
 [Download PowerPoint file](/DesignLayout.pptx)
 
 ![Sample Layout](https://user-images.githubusercontent.com/107071538/178272805-42860b35-3629-4f5c-b9e5-2cbb7b2d2a20.png)
