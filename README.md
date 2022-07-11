@@ -3,8 +3,8 @@ Cleaning and analysing WhatsApp group chat data as well as report design in Powe
 ## Introduction
 This project was one that resulted from a search for a pet project (passion project) that would involve working with data that was personal and which the insights would be interesting to see. The documentation includes:
 - Data Gathering & Transformation
-- Report requirement
-- Data Modelling
+- Report Requirement
+- Data Modeling
 - Report Design
 - Data & Report Limitation
 - Conclusion
@@ -16,13 +16,13 @@ The exported chats needed to be transformed for ease of analysis and it was done
 ## Report Requirement
 While planning for this project the initial purpose of creating the report was to see the overall trend of conversations on the group and identify what period of time the most conversations took place. However, during the report design I was also interested in creating a report that lets the individual members of the group see their level of activity on the group over time. In summary, the report requirement was provide an overall trend of group activity and let each group member see their activiity.
 
-## Data Modelling
+## Data Modeling
 For the Data Model the key tables that needed to be created were:
 | Table Name | Brief Description | Power Query Script |
 | -- | -- | -- |
 | Chats | This would contain the messages, when they were sent, what time and by who | [CleanWhatsAppData](\CleanWhatsAppData) |
 | Date | A standard date table | |
-| Time | A time table to facilitate analysis across time; hourly, by minute, AM/PM) | [Time Table](/TimeTable.pq) |
+| Time | A time table to facilitate analysis across time; hourly, by minute, AM/PM) | [TimeTable](/TimeTable.pq) |
 | Person | A table containing a unique list of the group members | |
 
 After all the tables are created, the needed relationships are created and it looks like this:
