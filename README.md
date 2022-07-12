@@ -20,7 +20,7 @@ While planning for this project the initial purpose of creating the report was t
 For the Data Model the key tables that needed to be created were:
 | Table Name | Brief Description | Power Query Script |
 | -- | -- | -- |
-| Chats | This would contain the messages, when they were sent, what time and by who | [CleanWhatsAppData](\CleanWhatsAppData) |
+| Chats | This would contain the messages, when they were sent, what time and by who | [CleanWhatsAppData](/CleanWhatsAppData) |
 | Date | A standard date table | |
 | Time | A time table to facilitate analysis across time; hourly, by minute, AM/PM) | [TimeTable](/TimeTable.pq) |
 | Person | A table containing a unique list of the group members | |
