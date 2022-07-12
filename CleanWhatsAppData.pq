@@ -18,7 +18,7 @@ let
     IdentifyMedia = Table.ReplaceValue(GroupedRows,"<Media omitted>","Media",Replacer.ReplaceText,{"Message"}),
     RemovedDeletedMessages = Table.ReplaceValue(IdentifyMedia,"You deleted this message",null,Replacer.ReplaceValue,{"Message"}),
     InsertedTimeKey = Table.AddColumn(RemovedDeletedMessages, "TimeKey", each Time.Hour([Time]) * 60 + Time.Minute([Time]), Int64.Type),
-    FilteredRows = Table.SelectRows(InsertedTimeKey, each ([Message] <> null and [Message] <> "") and ([Date] <= #date(2022, 4, 30))),
+    FilteredRows = Table.SelectRows(InsertedTimeKey, each ([Message] <> null and [Message] <> "")),
     AddedMessageType = Table.AddColumn(FilteredRows, "MessageType", each if [Message] = "Media" then "Media" else "Text", type text),
     TrimmedText = Table.TransformColumns(AddedMessageType,{{"Person", Text.Trim, type text}})
 in
