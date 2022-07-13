@@ -50,4 +50,4 @@ This was a fun project to work on. Hopefully, the Power Query Script and documen
 In the future there might be possible improvements on the Power Query Scripts.
 
 I do not provide the .pbix for privacy reasons. However you can explore the interactive version of the report to see the full functionality and User Experience.
-[WhatsApp Analytics](https://app.powerbi.com/view?r=eyJrIjoiNzJkMzlkMmQtYTc5YS00MjUwLTljYzQtMDEyYmU5NmIwYmNmIiwidCI6ImQ1Yjk0YzQ0LWU5YjMtNGY1ZC1iZmFiLTBhMjE5NDg2NWNmNCJ9)
+[WhatsApp Analytics](https://app.powerbi.com/view?r=eyJrIjoiZDUyYzAyNTMtNzMxMy00MzY0LWJlYTgtMTFjZTlkNTA3NWYxIiwidCI6ImQ1Yjk0YzQ0LWU5YjMtNGY1ZC1iZmFiLTBhMjE5NDg2NWNmNCJ9&pageName=ReportSectionda69547f7666a0481064)
