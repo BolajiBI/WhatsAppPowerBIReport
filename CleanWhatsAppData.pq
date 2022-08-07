@@ -10,7 +10,7 @@ let
             SplitDateAndTime = Table.SplitColumn(ExtractDateAndTime, "Date,Time", Splitter.SplitTextByEachDelimiter({", "}, QuoteStyle.Csv, false), {"Date", "Time"}),
             ChangedType = Table.TransformColumnTypes(SplitDateAndTime,{{"Column1", type text}, {"Date", type date}, {"Time", type time}}, if DateFormat = "DD/MM/YYY" then "en-GB" else "en-US"),            
             ReplacedErrorDateTime = Table.ReplaceErrorValues(ChangedType, {{"Date", null}, {"Time", null}}),
-            ExtractPerson = Table.AddColumn(ReplacedErrorDateTime, "Person", each Text.BetweenDelimiters([Column1], " " &MessageSeparator&" ", PersonSeparator), type text),
+            ExtractPerson = Table.AddColumn(ReplacedErrorDateTime, "Person", each if Text.Contains( Text.Start( [Column1], 10 ), "/" ) then Text.BetweenDelimiters([Column1], " " &MessageSeparator&" ", PersonSeparator) else "", type text),
             ExtractStartMsg = Table.AddColumn(ExtractPerson, "Messages1", each Text.AfterDelimiter([Column1], [Person]&PersonSeparator), type text),
             ReplacedWithNull = Table.ReplaceValue(ExtractStartMsg,"",null,Replacer.ReplaceValue,{"Person"}),
             AddedEndMsg = Table.AddColumn(ReplacedWithNull, "Messages", each if [Messages1] = "" then [Column1] else [Messages1], type text),
