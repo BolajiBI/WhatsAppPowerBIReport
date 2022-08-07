@@ -1,5 +1,5 @@
 let
-    fxCleanWhatsappText = (TextFilePath as text, MessageSeparator as text, PersonSeparator as text ) as table =>
+    fxCleanWhatsappText = (TextFilePath as text, MessageSeparator as text, PersonSeparator as text, DateFormat as text ) as table =>
         let
             Source = 
             Csv.Document(
@@ -8,7 +8,7 @@ let
             ),
             ExtractDateAndTime = Table.AddColumn(Source, "Date,Time", each Text.BeforeDelimiter([Column1], " " &MessageSeparator&" "), type text),
             SplitDateAndTime = Table.SplitColumn(ExtractDateAndTime, "Date,Time", Splitter.SplitTextByEachDelimiter({", "}, QuoteStyle.Csv, false), {"Date", "Time"}),
-            ChangedType = Table.TransformColumnTypes(SplitDateAndTime,{{"Column1", type text}, {"Date", type date}, {"Time", type time}}),
+            ChangedType = Table.TransformColumnTypes(SplitDateAndTime,{{"Column1", type text}, {"Date", type date}, {"Time", type time}}, if DateFormat = "DD/MM/YYY" then "en-GB" else "en-US"),            
             ReplacedErrorDateTime = Table.ReplaceErrorValues(ChangedType, {{"Date", null}, {"Time", null}}),
             ExtractPerson = Table.AddColumn(ReplacedErrorDateTime, "Person", each Text.BetweenDelimiters([Column1], " " &MessageSeparator&" ", PersonSeparator), type text),
             ExtractStartMsg = Table.AddColumn(ExtractPerson, "Messages1", each Text.AfterDelimiter([Column1], [Person]&PersonSeparator), type text),
@@ -44,6 +44,13 @@ let
                 Documentation.FieldCaption = "Contact Separator",
                 Documentation.FieldDescription = "Character separating Contact's name from the messages sent",
                 Documentation.SampleValues = {" : "}
+            ]
+        ),
+        DateFormat as (
+            type text meta [
+                Documentation.FieldCaption = "Date Format",
+                Documentation.FieldDescription = "Format of the date",
+                Documentation.AllowedValues = {"DD/MM/YYY", "MM/DD/YYY"}
             ]
         )
     ) as table meta[
