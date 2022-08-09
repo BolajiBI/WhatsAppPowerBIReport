@@ -13,14 +13,15 @@ let
             ChangedType = Table.TransformColumnTypes(SplitDateAndTime,{{"Column1", type text}, {"Date", type date}, {"Time", type time}}, if DateFormat = "DD/MM/YYY" then "en-GB" else "en-US"),            
             ReplacedErrorDateTime = Table.ReplaceErrorValues(ChangedType, {{"Date", null}, {"Time", null}}),
             ExtractPerson = Table.AddColumn(ReplacedErrorDateTime, "Person", each if Text.Contains( Text.Start( [Column1], 10 ), "/" ) then Text.BetweenDelimiters([Column1], if HasSquareBrackets then "] " else " " &MessageSeparator&" ", PersonSeparator) else "", type text),
-
+            
             ExtractStartMsg = Table.AddColumn(ExtractPerson, "Messages1", each Text.AfterDelimiter([Column1], [Person]&PersonSeparator), type text),
             ReplacedWithNull = Table.ReplaceValue(ExtractStartMsg,"",null,Replacer.ReplaceValue,{"Person"}),
             AddedEndMsg = Table.AddColumn(ReplacedWithNull, "Messages", each if [Messages1] = "" then [Column1] else [Messages1], type text),
             FilledDownDateTimePerson = Table.FillDown(AddedEndMsg,{"Date", "Time", "Person"}),
             GroupedRows = Table.Group(FilledDownDateTimePerson, {"Date", "Time", "Person"}, {{"Message", each Text.Combine(Table.SelectRows(_, each [Date] <> null)[Messages],"#(lf)"), type text}}),
-            RemovedEmojisFromName = Table.TransformColumns(GroupedRows,{{"Person", each Text.Select(_, {"A".."z"," "}), type text}}),
-            IdentifyMedia = Table.ReplaceValue(RemovedEmojisFromName,"<Media omitted>","Media",Replacer.ReplaceText,{"Message"}),
+            RemovedEmojisFromName = Table.TransformColumns(GroupedRows,{{"Person", each Text.Select(_, {"A".."z", " ", "0".."9","+"}), type text}}),
+            RemoveErrorNames = Table.SelectRows(RemovedEmojisFromName, each not Text.Contains([Person], "joined") and not Text.Contains([Person], "left") and not Text.Contains([Person], "changed") and not Text.Contains([Person], "added")),
+            IdentifyMedia = Table.ReplaceValue(RemoveErrorNames,"<Media omitted>","Media",Replacer.ReplaceText,{"Message"}),
             AddedMessageType = Table.AddColumn(IdentifyMedia, "MessageType", each if [Message] = "Media" then "Media" else "Text", type text),
             SelectColumns = Table.SelectColumns(AddedMessageType,{"Date", "Time", "Person", "Message", "MessageType"}),
             TrimmedText = Table.TransformColumns(SelectColumns,{{"Person", Text.Trim, type text}, {"Message", Text.Trim, type text}})
