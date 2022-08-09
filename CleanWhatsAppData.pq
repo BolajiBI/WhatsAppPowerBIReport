@@ -1,5 +1,5 @@
 let
-    fxCleanWhatsappText = (TextFilePath as text, MessageSeparator as text, PersonSeparator as text, DateFormat as text, HasSquareBrackets ) as table =>
+    fxCleanWhatsappText = (TextFilePath as text, MessageSeparator as text, PersonSeparator as text, DateFormat as text, HasSquareBrackets as logical ) as table =>
         let
             Source = 
             Csv.Document(
@@ -57,7 +57,7 @@ let
             ]
         ),
         HasSquareBrackets as (
-            type text meta [
+            type logical meta [
                 Documentation.FieldCaption = "Date Enclosed in [ ]",
                 Documentation.FieldDescription = "Checks if the date time is enclosed in square brackets [ ]",
                 Documentation.AllowedValues = {true, false}
